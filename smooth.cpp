@@ -81,3 +81,18 @@ void smoothSort(vector<int>& a) {
         }
     }
 }
+//this displays the array
+void printArray(const vector<int>& a) {
+    for (int i = 0; i < (int)a.size(); i++) {
+        cout << a[i];
+        if (i < (int)a.size() - 1) cout << "  ";
+    }
+    cout << "\n";
+}
+//read int-reads all user input to ensure user enters correct data type..,and it catches the error if wrong data type is iputed
+
+bool readInt(int& val) {
+    cin >> val;
+    if (cin.fail()) { cin.clear(); cin.ignore(10000, '\n'); return false; }
+    return true;
+}
