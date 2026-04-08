@@ -25,3 +25,21 @@ void sift(vector<int>& a, int root, int order) {
         }
     }
 }
+//fixes ordering across trees by swaping until each root is smaller than root in right
+void trinkle(vector<int>& a, int root, int order,
+             vector<int>& ordStack, int stackTop) {
+    while (stackTop > 0) {
+        int prevRoot = root - (int)L[order];
+        if (a[prevRoot] <= a[root]) break;
+        if (order >= 2) {
+            int right = root - 1;
+            int left  = root - 1 - (int)L[order - 1];
+            if (a[prevRoot] < a[right] || a[prevRoot] < a[left]) break;
+        }
+        swap(a[prevRoot], a[root]);
+        root = prevRoot;
+        stackTop--;
+        order = ordStack[stackTop];
+    }
+    sift(a, root, order);
+}
