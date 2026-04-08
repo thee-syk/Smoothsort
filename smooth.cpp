@@ -96,3 +96,36 @@ bool readInt(int& val) {
     if (cin.fail()) { cin.clear(); cin.ignore(10000, '\n'); return false; }
     return true;
 }
+//
+int main() {
+    buildLeo();
+    const int LIMIT = 50;//set max number in input
+    //checks condition using while loop to ensure limit is not passed
+    int n = 0;
+    while (true) {
+        cout << "\nHow many numbers do you want to sort? ";
+        if (readInt(n) && n >= 1 && n <=50) break;
+        cout <<"Enter a number between 1 and "<<LIMIT<<endl;
+ 
+    }
+    //  Enter the elements
+    vector<int> arr(n);
+    cout << "Enter " << n << " integer(s), one per line:\n";
+    for (int i = 0; i < n; i++) {
+        while (true) {
+            cout << "  [" << (i+1) << "] ";
+            if (readInt(arr[i])) break;
+            cout << "  [!] Invalid. Please enter an integer.\n";
+        }
+    }
+    //Shows original inputs
+    cout << "\n";
+    cout << "Original array:\n  ";
+    printArray(arr);
+    //Sorts the array
+    smoothSort(arr);
+    //Shows the sorted iput
+    cout << "\nSorted array (ascending):\n  ";
+    printArray(arr);
+        return 0;
+}
